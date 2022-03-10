@@ -1,0 +1,85 @@
+{% extends "bootstrap_base.html" %}
+
+{% block content %}
+
+    <h1>Customers Master List</h1><br/><br/>
+    {% for item in customers %}
+        <strong>{{item.name}}</strong><br/>
+        Address: {{item.address}}<br/>
+        Contact Number: {{item.contact_number}} <br/>
+        Email address: {{item.email}}<br/>
+        <hr>
+    {% endfor %}
+
+    <a href="{% url 'add_customer' %}" ><button type="button" class="btn btn-primary">Add Customer</button></a>
+<!-- 
+
+    <div class="col pt-2">
+        <h1 class="ml-3">Some Header</h1>   
+    </div>
+    <hr>
+    <div class="container">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="sample_input1" class="mb-2 mr-sm-2 control-label">Field 1</label>
+                <input type="text" class="form-control mb-2 mr-sm-2" id="exampleInputName2" style="width: 290px" placeholder="Field 1">
+            </div>
+            <div class="form-group">
+                <label for="sample_select1" class="mb-2 mr-sm-2 control-label">Field 2</label>
+                <select id="disabledSelect" class="form-control mb-2 mr-sm-2" style="width: 210px">
+                    <option>Open Menu</option>
+                </select>
+                </div>
+            <div class="form-group">
+                <label for="sample_input2" class="mb-2 mr-sm-2 control-label">Field 3</label>
+                <textarea class="form-control mb-2 mr-sm-3" rows="3" style="width: 335px">Text area</textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    <hr>
+    <div class="container">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                  <th>#</th>
+                  <th>Firstname</th>
+                  <th>Lastname</th>
+                  <th>Superhero Name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                <th scope="row">1</th>
+                  <td>Bruce</td>
+                  <td>Wayne</td>
+                  <td>Batman</td>
+                </tr>
+                <tr>
+                <th scope="row">2</th>
+                  <td>Selina</td>
+                  <td>Kyle</td>
+                  <td>Catwoman</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Diana</td>
+                  <td>Prince</td>
+                  <td>Wonder Woman</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>Harlene</td>
+                    <td>Quinzel</td>
+                    <td>Harley Quinn</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">5</th>
+                    <td>Damian</td>
+                    <td>Wayne</td>
+                    <td>Robin</td>
+                  </tr>
+              </tbody>
+        </table>
+    </div> -->
+{% endblock %}
