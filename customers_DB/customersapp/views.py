@@ -3,6 +3,9 @@ from .models import Customer
 from .forms import CustomerForm
 from django.http import HttpResponseRedirect
 
+def home(request):
+    return render (request, 'home.html')
+
 def base(request):
     return render (request, "bootstrap_base.html", {})
 
