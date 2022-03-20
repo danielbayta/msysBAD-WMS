@@ -1,0 +1,52 @@
+<!-- holding customers.html -->
+
+{% extends "bootstrap_base.html" %}
+
+{% block content %}
+
+<div class="container">
+
+  {% if messages %}
+  {% for message in messages %}
+    <div class="alert alert-success" role="alert">
+      {{ message }}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  {% endfor %}
+  {% endif %}
+
+  <div>
+    <div class="row text-center">
+      <h1>Customers Master List</h1>
+    </div><br>
+
+    <div class="row">
+      <div class="col-sm-4 d-flex justify-content-center my-auto">
+        <i class="bi bi-plus-square"></i>
+        <a href="{% url 'new_customer' %}" ><button type="button" class="btn btn-primary">Add Customer</button></a>
+      </div>
+      {% for item in customers %}
+      <div class="col-sm-4">
+        <div class="card">
+          <h5 class="card-header">{{item.name}}</h5>
+          <div class="card-body">
+            <p class="card-text">
+              {{item.name}}<br/>
+              {{item.address}}<br/>
+              {{item.contact_number}} <br/>
+              {{item.email}}<br/>
+            </p>
+            <a href="#" class="btn btn-warning">Update</a>
+          </div>
+        </div><br>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+         
+</div>
+
+{% endblock %}
