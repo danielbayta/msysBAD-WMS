@@ -1,6 +1,7 @@
 from django.db import models
 
 # Create your models here.
+<<<<<<< HEAD:WMS ver1/customers_DB/customersapp/models.py
 
 class Customer(models.Model):
     name = models.CharField(max_length = 300)
@@ -28,3 +29,5 @@ class Account(models.Model):
 
     def __str__(self):
         return f"{self.pk}: {self.username}"
+=======
+>>>>>>> main:customers_DB/customersapp/models.py
