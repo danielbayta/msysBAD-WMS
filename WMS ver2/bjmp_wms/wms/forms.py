@@ -33,3 +33,26 @@ class RegisterUserForm(UserCreationForm):
         self.fields['username'].widget.attrs['class'] = 'form-control'
         self.fields['password1'].widget.attrs['class'] = 'form-control'
         self.fields['password2'].widget.attrs['class'] = 'form-control'
+
+class InventoryForm(forms.ModelForm):
+    class Meta:
+        model = Inventory
+        fields = ('name', 'type', 'description', 'unit_price', 'quantity', 'reorder_level', 'reorder_date')
+        labels = {
+            'name': 'Name',
+            'type': 'Type',
+            'description': 'Description',
+            'unit_price': 'Price',
+            'quantity': 'Quantity',
+            'reorder_level': 'Reorder Level',
+            'reorder_date': 'Reorder Date',
+        }
+        # widgets = {
+        #     'name': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Item or supply'}),
+        #     'type': forms.SelectMultiple(choices=TYPES),
+        #     'description': forms.TextInput(attrs={'class':'form-control', 'placeholder':'Item description: make and model'}),
+        #     'unit_price': forms.NumberInput(attrs={'class':'form-control', 'placeholder':'100.00'}),
+        #     'quantity': forms.NumberInput(attrs={'class':'form-control', 'placeholder':'Quantity'}),
+        #     'reorder_level': forms.SelectMultiple(choices=LEVELS),
+        #     'reorder_date': forms.DateInput(),
+        # }

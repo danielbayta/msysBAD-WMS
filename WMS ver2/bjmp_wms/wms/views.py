@@ -79,5 +79,37 @@ def delete_customer(request, customer_id):
     messages.success(request, ("Customer Deleted!"))
     return redirect ('customers')
 
+def inventory(request):
+    all_inventory = Inventory.objects.all()
+    return render (request, 'inventory.html', {'inventory':all_inventory})
+
+def add_inventory(request):
+    submitted = False
+    if request.method == "POST":
+        form = InventoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/add_inventory?submitted = True')
+    else:
+        form = InventoryForm
+        if 'submitted' in request.GET:
+            submitted = True
+    return render (request, "add_inventory.html", {'form':form, 'submitted':submitted})   
+
+def update_inventory(request, inventory_id):
+    inventory = Inventory.objects.get(pk=inventory_id)
+    form = InventoryForm(request.POST or None, instance=inventory)
+    if form.is_valid():
+        form.save()
+        messages.success(request, ("Inventory Updated!"))
+        return redirect('inventory')
+    return render (request, "update_inventory.html", {'inventory': inventory, 'form':form})\
+
+def delete_inventory(request, inventory_id):
+    inventory = Inventory.objects.get(pk=inventory_id)
+    inventory.delete()
+    messages.success(request, ("Item Deleted!"))
+    return redirect ('inventory')
+    
 def base(request):
     return render (request, "bootstrap_base.html", {})

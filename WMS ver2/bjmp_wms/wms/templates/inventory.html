@@ -1,0 +1,42 @@
+{% extends "bootstrap_base.html" %}
+
+{% block content %}
+
+<div class="container text-center">
+    <h1>Inventory Master List</h1><br>
+
+  <table class="table table-hover table-sm table-responsive-sm">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Item ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Type</th>
+        <th scope="col">Description</th>
+        <th scope="col">Unit Price</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Reorder level</th>
+        <th scope="col">Reorder Date</th>
+        <th scope="col"> </th>
+        <th scope="col"> </th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in inventory %}
+      <tr>
+        <td class="align-middle">{{ item.pk }}</td>
+        <td class="align-middle">{{ item.name }}</td>
+        <td class="align-middle">{{ item.type }}</td>
+        <td class="align-middle">{{ item.description }}</td>
+        <td class="align-middle">₱{{ item.unit_price }}</td>
+        <td class="align-middle">{{ item.quantity }}</td>
+        <td class="align-middle">{{ item.reorder_level }}</td>
+        <td class="align-middle">{{ item.reorder_date }}</td>
+        <td class="align-middle"><a href="{% url 'update_inventory' item.id %}" class="btn btn-sm btn-outline-warning">Update</a></td>
+        <td class="align-middle"><a href="{% url 'delete_inventory' item.id %}" class="btn btn-sm btn-danger">Delete</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}
